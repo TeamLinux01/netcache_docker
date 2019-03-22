@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  netcache:
+    environment:
+      CACHE_DOMAINS_REPO: "https://github.com/TeamLinux01/cache-domains.git"
+      CLEAR_LOGS: "true"
+      LANCACHE_IP: "${NETCACHE_IP}"
+    image: teamlinux01/netcache
+    ports:
+      - "${NETCACHE_IP}:53:53/tcp"
+      - "${NETCACHE_IP}:53:53/udp"
+      - "${NETCACHE_IP}:80:80/tcp"
+      - "${NETCACHE_IP}:443:443/tcp"
+    restart: always
+    volumes:
+      - "data:/data"
+
+volumes:
+  data:
