@@ -2,10 +2,12 @@ version: "3"
 
 services:
   netcache:
+    domainname: "${DOMAIN_NAME}"
     environment:
       CACHE_DOMAINS_REPO: "https://github.com/TeamLinux01/cache-domains.git"
       CLEAR_LOGS: "true"
       LANCACHE_IP: "${NETCACHE_IP}"
+    hostname: "${HOST_NAME}"
     image: teamlinux01/netcache
     ports:
       - "${NETCACHE_IP}:53:53/tcp"
